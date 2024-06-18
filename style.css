@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     border: none;
-    /*! border: 1px solid red; */
+    border: 1px solid red; */
 }
 
 .container-calculator {
@@ -21,8 +21,6 @@
 }
 
 input {
-    
-    /*! margin: 0px 10px; */
     display: block;
     width: 265px;
     font-size: 35px;
@@ -54,7 +52,8 @@ input {
    
 button {
     height: 60px;
-    width: 70px;   
+    width: 70px;
+    font-size: 23px;
 }
 
 #buttonSum {
