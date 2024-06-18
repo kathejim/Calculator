@@ -23,3 +23,22 @@ function operate(num1, num2, operator) {
         }
     }
 }
+
+//Create a function to populate the display when clicking the number buttons and store it.
+let store = "";
+const buttonNumbers = document.querySelectorAll(".number");
+const displayContent = document.querySelector("input");
+
+function toDisplay() {
+buttonNumbers.forEach(button => button.addEventListener("click", function(event) {
+    if (store.length < 13) {
+        store += event.target.textContent;
+        console.log(store);
+        console.log(typeof(store));
+        displayContent.value = store;
+        console.log(displayContent.value);
+        console.log(store.length);
+    }   
+}))};
+
+toDisplay();
