@@ -1,0 +1,77 @@
+:root {
+    --measureButton: calc((100% - 15px) / 4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    /*! border: 1px solid red; */
+}
+
+.container-calculator {
+    width: fit-content;
+    background-color: #1d1d30;
+    margin: 60px auto;
+}
+
+.container-display {
+    background-color: greenyellow;
+    padding: 10px;
+}
+
+input {
+    
+    /*! margin: 0px 10px; */
+    display: block;
+    width: 265px;
+    font-size: 35px;
+    padding: 15px;
+}
+
+.container-buttons {
+    display: flex;
+    padding: 10px;
+    gap: 5px;
+}
+
+.container-wrap {
+    background-color: blueviolet;
+    width: 220px;
+    height: 320px;    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}  
+
+.container-operators {
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+   
+button {
+    height: 60px;
+    width: 70px;   
+}
+
+#buttonSum {
+    height: 125px;
+}
+    
+    
+    
+    
+    
+  
+
+
+
+
+
+
+
+
+
