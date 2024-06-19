@@ -68,31 +68,35 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
     console.log("secondNumber: " + secondNumber);
     console.log("store: " + store);
     console.log("operator :" + operator);
-    if (firstNumber != null) {
-        secondNumber = Number(store);
-        const result = operate(firstNumber, secondNumber, operator);
-        displayContent.value = result;
-        firstNumber = result;
-        secondNumber = 0;
-        store = "";
 
-        console.log("firstNumber: " + firstNumber);
-        console.log("secondNumber: " + secondNumber);
-        console.log("store: " + store);
+    //Pressing an operator when it is not the first button pressed.
+    if (store != "") {
+        if (firstNumber != null) {
+            secondNumber = Number(store);
+            const result = operate(firstNumber, secondNumber, operator);
+            displayContent.value = result;
+            firstNumber = result;
+            secondNumber = 0;
+            store = "";
+
+            console.log("firstNumber: " + firstNumber);
+            console.log("secondNumber: " + secondNumber);
+            console.log("store: " + store);
+            console.log("operator :" + operator);
+            console.log("result: " + result);
+            
+        }
+        else {
+            firstNumber = Number(store);
+            store = "";
+            console.log("firstNumber: " + firstNumber);
+            console.log("secondNumber: " + secondNumber);
+            console.log("store: " + store);
+            console.log("operator :" + operator);        
+        }
+        operator = event.target.textContent;
         console.log("operator :" + operator);
-        console.log("result: " + result);
-        
     }
-    else {
-        firstNumber = Number(store);
-        store = "";
-        console.log("firstNumber: " + firstNumber);
-        console.log("secondNumber: " + secondNumber);
-        console.log("store: " + store);
-        console.log("operator :" + operator);        
-    }
-    operator = event.target.textContent;
-    console.log("operator :" + operator);
 }));
 
 //Store the second number when clicking "=".
@@ -101,23 +105,41 @@ buttonEnter.addEventListener("click", function() {
     console.log("secondNumber: " + secondNumber);
     console.log("store: " + store);
     console.log("operator :" + operator);
+    //Pressing ENTER having already pressed and stored a first number:
+    // ==> 5 + (...) =
     if (firstNumber != null) {
-    secondNumber = Number(store);
-    console.log("firstNumber: " + firstNumber);
-    console.log("secondNumber: " + secondNumber);
-    console.log("store: " + store);
-    console.log("operator :" + operator);
 
-    const result = operate(firstNumber, secondNumber, operator);
-    displayContent.value = result;
-    store = result;
-    firstNumber = null;
-    secondNumber = null;
-    console.log("firstNumber: " + firstNumber);
-    console.log("secondNumber: " + secondNumber);
-    console.log("store: " + store);
-    console.log("operator :" + operator);
-    console.log("result: " + result);
+        //Pressing ENTER after pressing a second number (number in store). 
+        //Ideal case ==> 5 + 3 =
+        if (store != "") {
+            secondNumber = Number(store);
+            console.log("firstNumber: " + firstNumber);
+            console.log("secondNumber: " + secondNumber);
+            console.log("store: " + store);
+            console.log("operator :" + operator);
+
+            const result = operate(firstNumber, secondNumber, operator);
+            displayContent.value = result;
+            store = result;
+            firstNumber = null;
+            secondNumber = null;
+            console.log("firstNumber: " + firstNumber);
+            console.log("secondNumber: " + secondNumber);
+            console.log("store: " + store);
+            console.log("operator :" + operator);
+            console.log("result: " + result);
+        }
+        //Pressing ENTER after pressing an operator (no number stored)
+        // MALFORMED EXPRESSION ==> 5 + =
+        else {
+            clearCalculator();
+        }
+    }
+
+    //When pressing ENTER after a number without an operator (no number in store)
+    // Keep the same number in display, but restart state. => 5 =
+    else {
+        store = "";
     }
     operator = "";
 
@@ -131,11 +153,14 @@ buttonEnter.addEventListener("click", function() {
 });
 
 //Add a clear button to restart
-clearButton.addEventListener("click", function() {
+//Add a clear button to restart
+clearButton.addEventListener("click", clearCalculator);
+
+//Create a function to clear the calculator state
+function clearCalculator() {
     store = "";
     operator = "";
     firstNumber = null;
     secondNumber = null;
     displayContent.value = 0;
-});
-
+};
