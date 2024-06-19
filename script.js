@@ -5,8 +5,8 @@ const multiplication = (num1, num2) => num1 * num2;
 const division = (num1, num2) => num1 / num2;
 
 // Create the global variables to store the numbers, operators and functions for basic operators.
-let firstNumber = 0;
-let secondNumber = 0;
+let firstNumber = null;
+let secondNumber = null;
 let store = "";
 let operator = "";
 const operators = ["+", "-", "*", "/"];
@@ -65,8 +65,7 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
         secondNumber = Number(store);
         const result = operate(firstNumber, secondNumber, operator);
         displayContent.value = result;
-        store = result;
-        firstNumber = store;
+        firstNumber = result;
         secondNumber = 0;
         store = "";
         console.log("firstNumber: " + firstNumber);
@@ -104,8 +103,8 @@ buttonEnter.addEventListener("click", function() {
     const result = operate(firstNumber, secondNumber, operator);
     displayContent.value = result;
     store = result;
-    firstNumber = 0;
-    secondNumber = 0;
+    firstNumber = null;
+    secondNumber = null;
     console.log("firstNumber: " + firstNumber);
     console.log("secondNumber: " + secondNumber);
     console.log("store: " + store);
@@ -119,8 +118,8 @@ buttonEnter.addEventListener("click", function() {
 clearButton.addEventListener("click", function() {
     store = "";
     operator = "";
-    firstNumber = 0;
-    secondNumber = 0;
+    firstNumber = null;
+    secondNumber = null;
     displayContent.value = 0;
 });
 
