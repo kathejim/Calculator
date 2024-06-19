@@ -2,7 +2,9 @@
 const sum = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
 const multiplication = (num1, num2) => num1 * num2;
-const division = (num1, num2) => num1 / num2;
+const division = (num1, num2) => num1 / num2; 
+        
+// CHECK THE CONDITION DIVIDED BY 0!!!!!!
 
 // Create the global variables to store the numbers, operators and functions for basic operators.
 let firstNumber = null;
@@ -113,6 +115,13 @@ buttonEnter.addEventListener("click", function() {
         //Ideal case ==> 5 + 3 =
         if (store != "") {
             secondNumber = Number(store);
+
+            //Handling the case where the denominator is zero.
+            if (secondNumber === 0) {
+                clearCalculator();
+                displayContent.value = "OOPS!";
+                return;
+            }
             console.log("firstNumber: " + firstNumber);
             console.log("secondNumber: " + secondNumber);
             console.log("store: " + store);
@@ -133,6 +142,7 @@ buttonEnter.addEventListener("click", function() {
         // MALFORMED EXPRESSION ==> 5 + =
         else {
             clearCalculator();
+            displayContent.value = "OOPS!"
         }
     }
 
