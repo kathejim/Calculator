@@ -39,9 +39,16 @@ function toDisplay() {
         console.log("secondNumber: " + secondNumber);
         console.log("store: " + store);
         console.log("operator :" + operator);
+
+        //Condition when comes from ENTER, store is a number
+        //and needs to be empty.
+        if (typeof store === "number") {
+            store = "";
+        }
+
         if (store.length < 13) {
-            store += event.target.textContent;
-            displayContent.value = store;
+        store += event.target.textContent;
+        displayContent.value = store;          
         }   
     }))
     console.log("firstNumber: " + firstNumber);
@@ -61,13 +68,14 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
     console.log("secondNumber: " + secondNumber);
     console.log("store: " + store);
     console.log("operator :" + operator);
-    if (firstNumber > 0) {
+    if (firstNumber != null) {
         secondNumber = Number(store);
         const result = operate(firstNumber, secondNumber, operator);
         displayContent.value = result;
         firstNumber = result;
         secondNumber = 0;
         store = "";
+
         console.log("firstNumber: " + firstNumber);
         console.log("secondNumber: " + secondNumber);
         console.log("store: " + store);
@@ -93,7 +101,7 @@ buttonEnter.addEventListener("click", function() {
     console.log("secondNumber: " + secondNumber);
     console.log("store: " + store);
     console.log("operator :" + operator);
-    if (firstNumber > 0) {
+    if (firstNumber != null) {
     secondNumber = Number(store);
     console.log("firstNumber: " + firstNumber);
     console.log("secondNumber: " + secondNumber);
@@ -111,10 +119,18 @@ buttonEnter.addEventListener("click", function() {
     console.log("operator :" + operator);
     console.log("result: " + result);
     }
+    operator = "";
+
+    // After pressing ENTER i have the display (result) in my store (NUMBER), no operator
+    //no numbers. Ready to be used in 2 situations:
+
+    //1. Pressing operator: first number = store(result)  --> press number (continues)
+    //2. Pressing a number: 
+
+
 });
 
 //Add a clear button to restart
-
 clearButton.addEventListener("click", function() {
     store = "";
     operator = "";
