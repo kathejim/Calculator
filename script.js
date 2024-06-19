@@ -4,8 +4,6 @@ const subtract = (num1, num2) => num1 - num2;
 const multiplication = (num1, num2) => num1 * num2;
 const division = (num1, num2) => num1 / num2; 
         
-// CHECK THE CONDITION DIVIDED BY 0!!!!!!
-
 // Create the global variables to store the numbers, operators and functions for basic operators.
 let firstNumber = null;
 let secondNumber = null;
@@ -76,7 +74,8 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
         if (firstNumber != null) {
             secondNumber = Number(store);
             const result = operate(firstNumber, secondNumber, operator);
-            displayContent.value = result;
+            const adjustedResult = adjustNumberLength(result);
+            displayContent.value = adjustedResult; 
             firstNumber = result;
             secondNumber = 0;
             store = "";
@@ -128,9 +127,10 @@ buttonEnter.addEventListener("click", function() {
             console.log("operator :" + operator);
 
             const result = operate(firstNumber, secondNumber, operator);
-            displayContent.value = result;
+            const adjustedResult = adjustNumberLength(result);
+            displayContent.value = adjustedResult;
             store = result;
-            firstNumber = null;
+            firstNumber = null; 
             secondNumber = null;
             console.log("firstNumber: " + firstNumber);
             console.log("secondNumber: " + secondNumber);
@@ -174,3 +174,32 @@ function clearCalculator() {
     secondNumber = null;
     displayContent.value = 0;
 };
+
+//Create a function that checks and/or adjust a number to fit the display screen 
+//with maximum 12 characters.
+function adjustNumberLength(number) {
+
+    const numberString = number.toString();
+    const numberLength = numberString.length;
+
+    if (numberLength <= 13) {
+        return number;
+    }
+    else {
+        // 12.345678901234 => 12.3456789012
+        if(number < 1e13 && number > -1e12) {
+            const index = numberString.indexOf(".");
+             return number.toFixed(13 - index);
+        } 
+        // 123456789012345 => 1.234567e+14
+        else if (number >= 1e13) {
+            return number.toExponential(7);
+        }
+        // -12345678901234 => -1.23456e+14
+        else {
+            return number.toExponential(6);
+        }
+    } 
+};
+
+
