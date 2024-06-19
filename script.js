@@ -4,9 +4,11 @@ const subtract = (num1, num2) => num1 - num2;
 const multiplication = (num1, num2) => num1 * num2;
 const division = (num1, num2) => num1 / num2;
 
-// Create 3 variables for basic operators.
+// Create the global variables to store the numbers, operators and functions for basic operators.
 let firstNumber = 0;
 let secondNumber = 0;
+let store = "";
+let operator = "";
 const operators = ["+", "-", "*", "/"];
 const operations = [sum, subtract, multiplication, division];
 
@@ -24,12 +26,11 @@ function operate(num1, num2, operator) {
     }
 }
 // 
-let store = "";
-let operator = "";
 const buttonNumbers = document.querySelectorAll(".number");
 const displayContent = document.querySelector("input");
 const buttonOperators = document.querySelectorAll(".operator");
 const buttonEnter = document.querySelector("#enter");
+const clearButton = document.querySelector("#clear");
 
 //Create a function to populate the display when clicking the number buttons and store it.
 function toDisplay() {
@@ -111,5 +112,15 @@ buttonEnter.addEventListener("click", function() {
     console.log("operator :" + operator);
     console.log("result: " + result);
     }
+});
+
+//Add a clear button to restart
+
+clearButton.addEventListener("click", function() {
+    store = "";
+    operator = "";
+    firstNumber = 0;
+    secondNumber = 0;
+    displayContent.value = 0;
 });
 
