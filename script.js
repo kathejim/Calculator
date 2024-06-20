@@ -31,6 +31,7 @@ const displayContent = document.querySelector("input");
 const buttonOperators = document.querySelectorAll(".operator");
 const buttonEnter = document.querySelector("#enter");
 const clearButton = document.querySelector("#clear");
+const percentageButton = document.querySelector("#percentage");
 
 //Create a function to populate the display when clicking the number buttons and store it.
 function toDisplay() {
@@ -58,7 +59,7 @@ function toDisplay() {
 };
 
 window.onload = function() {
-    displayContent.value = 0;
+    displayContent.value = "0";
 }
 toDisplay();
 
@@ -202,4 +203,11 @@ function adjustNumberLength(number) {
     } 
 };
 
-
+//Button percentage
+percentageButton.addEventListener("click", function() {
+    const number = Number(displayContent.value);
+    const result = number / 100;
+    displayContent.value = result;
+    store = result;
+    operator = "";
+});
