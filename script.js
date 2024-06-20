@@ -32,6 +32,7 @@ const buttonOperators = document.querySelectorAll(".operator");
 const buttonEnter = document.querySelector("#enter");
 const clearButton = document.querySelector("#clear");
 const percentageButton = document.querySelector("#percentage");
+const signButton = document.querySelector("#sign");
 
 //Create a function to populate the display when clicking the number buttons and store it.
 function toDisplay() {
@@ -210,4 +211,11 @@ percentageButton.addEventListener("click", function() {
     displayContent.value = result;
     store = result;
     operator = "";
+});
+
+signButton.addEventListener("click", function() {
+    const number = Number(displayContent.value);
+    const result = number * -1;
+    store = result;
+    displayContent.value = store;   
 });
