@@ -14,7 +14,6 @@ const operations = [sum, subtract, multiplication, division];
 
 //Create function operate that calls a function to operate 2 numbers.
 function operate(num1, num2, operator) {
-
     const operatorExist = operators.includes(operator);
 
     if (!isNaN(num1) && !isNaN(num2) && operatorExist) {
@@ -25,7 +24,7 @@ function operate(num1, num2, operator) {
         }
     }
 }
-// 
+ 
 const buttonNumbers = document.querySelectorAll(".number");
 const displayContent = document.querySelector("input");
 const buttonOperators = document.querySelectorAll(".operator");
@@ -42,12 +41,13 @@ function toDisplay() {
         console.log("store: " + store);
         console.log("operator :" + operator);
 
-        //Condition when comes from ENTER, store is a number
-        //and needs to be empty.
+        //Cliclin numbers after clicking ENTER, store is a NUMBER
+        //and needs to be empty to add a NEW NUMBER.
         if (typeof store === "number") {
             store = "";
         }
 
+        //Clicking numbers
         if (store.length < 13) {
         store += event.target.textContent;
         displayContent.value = store;          
@@ -64,15 +64,16 @@ window.onload = function() {
 }
 toDisplay();
 
-//Store the first number when clicking an operator.
+//When clicking an operator.
 buttonOperators.forEach(button => button.addEventListener("click", function(event) {
     console.log("firstNumber: " + firstNumber);
     console.log("secondNumber: " + secondNumber);
     console.log("store: " + store);
     console.log("operator :" + operator);
 
-    //Pressing an operator when it is not the first button pressed.
+    //Clicking an operator when it is not the first button clicked.
     if (store != "") {
+        // ==> 3 + 5 +
         if (firstNumber != null) {
             secondNumber = Number(store);
             const result = operate(firstNumber, secondNumber, operator);
@@ -81,7 +82,6 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
             firstNumber = result;
             secondNumber = 0;
             store = "";
-
             console.log("firstNumber: " + firstNumber);
             console.log("secondNumber: " + secondNumber);
             console.log("store: " + store);
@@ -89,6 +89,7 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
             console.log("result: " + result);
             
         }
+        // ==> 3 + 
         else {
             firstNumber = Number(store);
             store = "";
@@ -103,6 +104,7 @@ buttonOperators.forEach(button => button.addEventListener("click", function(even
 }));
 
 //Store the second number when clicking "=".
+//When clicking ENTER.
 buttonEnter.addEventListener("click", function() {
     console.log("firstNumber: " + firstNumber);
     console.log("secondNumber: " + secondNumber);
@@ -117,7 +119,7 @@ buttonEnter.addEventListener("click", function() {
         if (store != "") {
             secondNumber = Number(store);
 
-            //Handling the case where the denominator is zero.
+            //Handling the case where the divisor is zero.
             if (secondNumber === 0) {
                 clearCalculator();
                 displayContent.value = "OOPS!";
@@ -164,11 +166,9 @@ buttonEnter.addEventListener("click", function() {
 
 });
 
-//Add a clear button to restart
-//Add a clear button to restart
+//When clicking AC to restart the calculator state.
 clearButton.addEventListener("click", clearCalculator);
 
-//Create a function to clear the calculator state
 function clearCalculator() {
     store = "";
     operator = "";
@@ -180,7 +180,6 @@ function clearCalculator() {
 //Create a function that checks and/or adjust a number to fit the display screen 
 //with maximum 12 characters.
 function adjustNumberLength(number) {
-
     const numberString = number.toString();
     const numberLength = numberString.length;
 
@@ -204,7 +203,7 @@ function adjustNumberLength(number) {
     } 
 };
 
-//Button percentage
+//When clicking percentage %
 percentageButton.addEventListener("click", function() {
     const number = Number(displayContent.value);
     const result = number / 100;
@@ -213,6 +212,7 @@ percentageButton.addEventListener("click", function() {
     operator = "";
 });
 
+//When clicking sign +/-
 signButton.addEventListener("click", function() {
     const number = Number(displayContent.value);
     const result = number * -1;
