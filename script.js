@@ -41,7 +41,7 @@ function toDisplay() {
         console.log("store: " + store);
         console.log("operator :" + operator);
 
-        //Cliclin numbers after clicking ENTER, store is a NUMBER
+        //Clicking numbers after clicking ENTER, store is a NUMBER
         //and needs to be empty to add a NEW NUMBER.
         if (typeof store === "number") {
             store = "";
@@ -68,11 +68,11 @@ toDisplay();
 buttonOperators.forEach(button => button.addEventListener("click", function(event) {
     console.log("firstNumber: " + firstNumber);
     console.log("secondNumber: " + secondNumber);
-    console.log("store: " + store);
+    console.log(`store: ${store}`);
     console.log("operator :" + operator);
 
     //Clicking an operator when it is not the first button clicked.
-    if (store != "") {
+    if (store !== "") {
         // ==> 3 + 5 +
         if (firstNumber != null) {
             secondNumber = Number(store);
@@ -120,7 +120,7 @@ buttonEnter.addEventListener("click", function() {
             secondNumber = Number(store);
 
             //Handling the case where the divisor is zero.
-            if (secondNumber === 0) {
+            if (secondNumber === 0 && operator == "/") {
                 clearCalculator();
                 displayContent.value = "OOPS!";
                 return;
