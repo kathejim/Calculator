@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    border: none;
     burder: 1px solid red;
     background-color: rgb(190, 173, 16);
 }
@@ -12,7 +11,9 @@ body {
 
 .container-calculator {
     width: fit-content;
-    margin: 60px auto;
+    padding: 100px 0px;
+    margin: 0px auto;
+    height: 100%;
 }
 
 .container-display {
@@ -66,6 +67,7 @@ button {
     color: whitesmoke;
     font-weight: 500;
     border-radius: 15px;
+    border: none;
 }
 
 #buttonSum {
