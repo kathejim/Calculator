@@ -1,23 +1,25 @@
-:root {
-    --measureButton: calc((100% - 15px) / 4);
-}
-
 * {
     margin: 0;
     padding: 0;
     border: none;
-    border: 1px solid red; */
+    burder: 1px solid red;
+    background-color: rgb(190, 173, 16);
+}
+
+body {
+    height: 100vh;
 }
 
 .container-calculator {
     width: fit-content;
-    background-color: #1d1d30;
     margin: 60px auto;
 }
 
 .container-display {
-    background-color: greenyellow;
+    background-color: #1b391d;
     padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 input {
@@ -25,16 +27,22 @@ input {
     width: 265px;
     font-size: 35px;
     padding: 15px;
+    background-color: #8a858ab2;
+    text-align: right;
+    border-radius: 5px;
 }
 
 .container-buttons {
     display: flex;
     padding: 10px;
     gap: 5px;
+    background-color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .container-wrap {
-    background-color: blueviolet;
+    background-color: black;
     width: 220px;
     height: 320px;    
     display: flex;
@@ -44,7 +52,7 @@ input {
 }  
 
 .container-operators {
-    background-color: yellow;
+    background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,12 +62,23 @@ button {
     height: 60px;
     width: 70px;
     font-size: 23px;
+    background-color: #29621a;
+    color: whitesmoke;
+    font-weight: 500;
+    border-radius: 15px;
 }
 
 #buttonSum {
     height: 125px;
 }
-    
+
+.operator {
+    background-color: #b9b926cf;
+}
+
+#clear, #sign, #percentage {
+    background-color: #ffa500ba;
+}
     
     
     
